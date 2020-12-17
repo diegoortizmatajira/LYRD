@@ -11,7 +11,9 @@ function! LYRD#layers#core#plugins() abort
 endfunction
 
 function! LYRD#layers#core#settings() abort
-
+    call LYRD#layers#commands#register_commands({
+                \ "CMDUno": ":echo 'hola'",
+                \})
 endfunction
 
 function! LYRD#layers#core#keybindings() abort
