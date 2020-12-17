@@ -41,12 +41,14 @@ function! LYRD#layers#core#keybindings() abort
     cnoreabbrev Q q
     cnoreabbrev Qall qall
 
+    call LYRD#layers#mappings#space([
+                \ [ 'nmap', ['x'], ':CMDUno<CR>', 'Prueba'],
+                \ [ 'nmap', ['y'], ':CMDUno<CR>', 'Prueba 2'],
+                \ ])
+
 endfunction
 
 function! LYRD#layers#core#complete() abort
 
 endfunction
 
-function! LYRD#layers#core#support()
-
-endfunction
