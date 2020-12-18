@@ -12,7 +12,10 @@ endfunction
 
 function! LYRD#layers#core#settings() abort
     call LYRD#layers#commands#register_commands({
-                \ "CMDUno": ":echo 'hola'",
+                \ "LYRDViewFileTree": ":e .",
+                \ "LYRDViewFileExplorer": ":e .",
+                \ "LYRDViewErrorList": ":cope",
+                \ "LYRDViewRegisters": ":registers",
                 \})
 endfunction
 
@@ -21,6 +24,7 @@ function! LYRD#layers#core#keybindings() abort
     nmap <C-s> :w<CR>
     imap <C-s> <Esc>:w<CR>
     imap <Leader>s <Esc>:w<CR>
+    nnoremap <silent> <F2> :LYRDViewFileExplorer<CR>
     "" Switching windows
     noremap <C-j> <C-w>j
     noremap <C-k> <C-w>k
@@ -63,15 +67,8 @@ function! LYRD#layers#core#keybindings() abort
                 \ ])
 
     call LYRD#layers#mappings#space([
-                \ ["nmap", ['f', 'c', 'c'], ':CocConfig', 'Open CoC Config'],
-                \ ["nmap", ['v', 'l'], ':cope<CR>', 'List all errors'],
-                \ ["nmap", ['v', 'r'], ':registers<CR>', 'Registers'],
-                \ ["nmap", ['v', 'y'], ':<C-u>CocList -A --normal yank<CR>', 'Yank list'],
-                \ ["nmap", ['v', 'j'], ':<C-u>CocNext<CR>', 'Next item'],
-                \ ["nmap", ['v', 'k'], ':<C-u>CocPrev<CR>', 'Previous item'],
-                \ ["nmap", ['v', 'p'], ':<C-u>CocListResume<CR>', 'Resume list'],
-                \ ["nmap", ['v', 'e'], ':<C-u>CocList extensions<CR>', 'Extensions'],
-                \ ["nmap", ['s', 'v'], ':<C-u>CocList vimcommands<CR>', 'Vim Commands'],
+                \ ["nmap", ['v', 'l'], ':LYRDViewErrorList<CR>', 'List all errors'],
+                \ ["nmap", ['v', 'r'], ':LYRDViewRegisters<CR>', 'Registers'],
                 \ ["nmap", ['b', '>'], ':bn<CR>', 'Next buffer'],
                 \ ["nmap", ['b', '<'], ':bp<CR>', 'Previous buffer'],
                 \ ["nmap", ['b', 'd'], ':bd<CR>', 'Close buffer'],
@@ -91,8 +88,8 @@ function! LYRD#layers#core#keybindings() abort
                 \ ["nmap", ['t', 'D'], ':tabclose!<CR>', 'Force close tab'],
                 \ ["nmap", ['f', 's'], ':w<CR>', 'Save current file'],
                 \ ["nmap", ['f', 'S'], ':wall<CR>', 'Save all files'],
-                \ ["nmap", ['f', 't'], ':CocCommand explorer<CR>', 'Toggle file tree'],
-                \ ["nmap", ['f', 'e'], ':CocCommand explorer --position floating<CR>', 'Explore files'],
+                \ ["nmap", ['f', 't'], ':LYRDViewFileTree<CR>', 'Toggle file tree'],
+                \ ["nmap", ['f', 'e'], ':LYRDViewFileExplorer<CR>', 'Explore files'],
                 \ ["nmap", ['A', 'i'], ':PlugInstall<CR>', 'Install plugins'],
                 \ ["nmap", ['A', 'u'], ':PlugUpdate<CR>', 'Update plugins'],
                 \ ["nmap", ['A', 'c'], ':PlugClean<CR>', 'Clean plugins'],
