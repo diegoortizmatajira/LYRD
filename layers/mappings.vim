@@ -10,10 +10,14 @@ function! LYRD#layers#mappings#settings() abort
     let g:LYRD_Settings.mappings = {}
     let g:LYRD_Settings.mappings.Leader = {}
     let g:LYRD_Settings.mappings.Space = {}
+    call which_key#register(',', g:LYRD_Settings.mappings.Leader)
+    call which_key#register('<Space>', g:LYRD_Settings.mappings.Space)
+    let g:which_key_timeout = 100
 endfunction
 
 function! LYRD#layers#mappings#keybindings() abort
-
+    nnoremap <silent> <Leader> :WhichKey '<Leader>'<CR>
+    nnoremap <silent> <Space> :WhichKey '<Space>'<CR>
 endfunction
 
 function! LYRD#layers#mappings#complete() abort
@@ -36,8 +40,10 @@ function! LYRD#layers#mappings#space(mappings) abort
     endfor
 endfunction
 
-function! LYRD#layers#mappings#spacemenu(keys, desc)
-    call s:recursive_doc(g:LYRD_Settings.mappings.Space, a:keys, { 'name': '[ '. a:desc .' ]'}, 0)
+function! LYRD#layers#mappings#spacemenu(menus)
+    for item in a:menus
+        call s:mapmenu('Space', item[0], item[1])
+    endfor
 endfunction
 
 function! LYRD#layers#mappings#leaderignorekey(keys)
@@ -46,6 +52,10 @@ endfunction
 
 function! LYRD#layers#mappings#leaderignoremenu(keys)
     call s:recursive_doc(g:LYRD_Settings.mappings.Leader, a:keys, { 'name': 'which_key_ignore'}, 0)
+endfunction
+
+function! s:mapmenu(lead, keys, desc)
+    call s:recursive_doc(g:LYRD_Settings.mappings[a:lead], a:keys, { 'name': '[ '. a:desc .' ]'}, 0)
 endfunction
 
 function! s:mapkey(lead, m, keys, cmd, desc) abort
