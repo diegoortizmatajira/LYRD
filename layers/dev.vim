@@ -71,6 +71,8 @@ function! LYRD#layers#dev#keybindings() abort
                 \ ["nmap", ['d', 'D'], ':vsp<CR>:LYRDGoToDefinition<CR>', 'Go to definition (v-split],'],
                 \ ['nmap', ['d', 'p', 'd'], ':LYRDPreviewDefinitions<CR>', 'Preview definitions'],
                 \ ['nmap', ['d', 'p', 'i'], ':LYRDPreviewImplementations<CR>', 'Preview implementations'],
+                \ ['nmap', ['D', 's'], ':LYRDDebugStart<CR>', 'Debug start'],
+                \ ['nmap', ['D', 'b'], ':LYRDDebugBreakpoint<CR>', 'Toggle breakpoint'],
                 \ ['nmap', ['T', '.'], ':LYRDTest<CR>', 'Run project tests'],
                 \ ['nmap', ['T', 's'], ':LYRDTestSuite<CR>', 'Run suite tests'],
                 \ ['nmap', ['T', 'f'], ':LYRDTestFile<CR>', 'Run file tests'],
@@ -96,6 +98,9 @@ function! LYRD#layers#dev#keybindings() abort
 
     nnoremap <silent> K :LYRDViewDocumentation<CR>
     map gd :LYRDGoToDefinition<CR>
+    nmap <F5> :LYRDDebugStart<CR>
+    nmap <F9> :LYRDDebugBreakpoint<CR>
+
 
 endfunction
 

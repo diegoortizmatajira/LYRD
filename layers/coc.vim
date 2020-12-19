@@ -75,8 +75,8 @@ function! LYRD#layers#coc#keybindings() abort
                 \])
 
     call LYRD#layers#mappings#leader([
-                \ ['vmap', ['a'], '<Plug>(coc-codeaction-selected', 'Code Action for selection'],
-                \ ['nmap', ['a'], '<Plug>(coc-codeaction-selected', 'Code Action for selection'],
+                \ ['vmap', ['a'], '<Plug>(coc-codeaction-selected)', 'Code Action for selection'],
+                \ ['nmap', ['a'], '<Plug>(coc-codeaction-selected)', 'Code Action for selection'],
                 \])
 
     " Use tab for trigger completion with characters ahead and navigate.
