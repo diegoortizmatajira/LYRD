@@ -1,8 +1,8 @@
 
 function! LYRD#layers#motions#plugins() abort
-    call LYRD#setup#plugins({
-                \ 'easymotion/vim-easymotion': '',
-                \})
+  call LYRD#setup#plugins({
+        \ 'easymotion/vim-easymotion': '',
+        \})
 
 endfunction
 
@@ -31,11 +31,13 @@ function! LYRD#layers#motions#keybindings() abort
   map <Plug>(easymotion-prefix)K <Plug>(easymotion-k)
   " ⬅ Jump backward
   map <Plug>(easymotion-prefix)h <Plug>(easymotion-linebackward)
+  " Jump anywhere
+  map <Plug>(easymotion-prefix)a <Plug>(easymotion-jumptoanywhere)
 
 
 
   " Find character (In line)
-  map <Plug>(easymotion-prefix)s <Plug>(easymotion-sl)
+  map <Plug>(easymotion-prefix)s <Plug>(easymotion-s)
   " Search expression (In line)
   map <Plug>(easymotion-prefix)S <Plug>(easymotion-sln)
 
