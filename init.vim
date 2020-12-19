@@ -8,11 +8,11 @@ call LYRD#setup#load(s:root, [
             \ 'commands', 
             \ 'core', 
             \ 'motions',
+            \ 'dev',
+            \ 'debug',
             \ 'git',
             \ 'coc',
             \ 'fzf',
-            \ 'dev',
-            \ 'debug',
             \ 'wiki',
             \ 'ui',
             \])

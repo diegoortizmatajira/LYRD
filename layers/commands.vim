@@ -33,7 +33,6 @@ function! LYRD#layers#commands#execute_command(command)
             echo "Command '". a:command . "' not implemented for the filetype '".&filetype."'"
         endif
     endif
-
 endfunction
 
 function! LYRD#layers#commands#register_implementation(filetype, command, implementation)
@@ -43,7 +42,7 @@ function! LYRD#layers#commands#register_implementation(filetype, command, implem
     call extend(g:LYRD_Settings.commands[a:command], { a:filetype : a:implementation })
 endfunction
 
-function! LYRD#layers#commands#register_implementations(filetype, implementations)
+function! LYRD#layers#commands#register_implementations(filetype, commands)
     for cmd in items(a:commands)
         call LYRD#layers#commands#register_implementation(a:filetype, cmd[0], cmd[1])
     endfor

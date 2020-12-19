@@ -2,8 +2,6 @@
 function! LYRD#layers#core#plugins() abort
     call LYRD#setup#plugins({
                 \    'Shougo/vimproc.vim': {'do': 'make'},
-                \    'Raimondi/delimitMate': '',
-                \    'tpope/vim-commentary': '',
                 \    'tpope/vim-surround': '',
                 \    'vimwiki/vimwiki': '',
                 \    })
@@ -16,6 +14,7 @@ function! LYRD#layers#core#settings() abort
                 \ "LYRDViewFileExplorer": ":e .",
                 \ "LYRDViewErrorList": ":cope",
                 \ "LYRDViewRegisters": ":registers",
+                \ "LYRDViewYankList": "",
                 \})
 endfunction
 
@@ -53,13 +52,10 @@ function! LYRD#layers#core#keybindings() abort
                 \ [['A'], 'Application'],
                 \ [['b'], 'Buffers'],
                 \ [['t'], 'Tabs'],
-                \ [['d'], 'Development'],
-                \ [['D'], 'Debug'],
                 \ [['e'], 'Edit'],
                 \ [['f'], 'Files'],
-                \ [['f', 'c'], 'Config'],
                 \ [['G'], 'Go to'],
-                \ [['l'], 'Language specified'],
+                \ [['p'], 'Plugins'],
                 \ [['q'], 'Quit'],
                 \ [['s'], 'Search'],
                 \ [['u'], 'User interface'],
@@ -69,6 +65,7 @@ function! LYRD#layers#core#keybindings() abort
     call LYRD#layers#mappings#space([
                 \ ["nmap", ['v', 'l'], ':LYRDViewErrorList<CR>', 'List all errors'],
                 \ ["nmap", ['v', 'r'], ':LYRDViewRegisters<CR>', 'Registers'],
+                \ ["nmap", ['v', 'y'], ':LYRDViewYankList<CR>', 'Yank list'],
                 \ ["nmap", ['b', '>'], ':bn<CR>', 'Next buffer'],
                 \ ["nmap", ['b', '<'], ':bp<CR>', 'Previous buffer'],
                 \ ["nmap", ['b', 'd'], ':bd<CR>', 'Close buffer'],
@@ -94,7 +91,6 @@ function! LYRD#layers#core#keybindings() abort
                 \ ["nmap", ['A', 'u'], ':PlugUpdate<CR>', 'Update plugins'],
                 \ ["nmap", ['A', 'c'], ':PlugClean<CR>', 'Clean plugins'],
                 \ ["nmap", ['A', 'w'], ':VimwikiIndex<CR>', 'Wiki'],
-                \ ["nmap", ['A', 't'], ':terminal<CR>', 'Terminal'],
                 \ ["nmap", ['A', 't'], ':terminal<CR>', 'Terminal'],
                 \ ["nmap", ['q', '.'], ':q<CR>', 'Close window'],
                 \ ["nmap", ['q', 'q'], ':qa<CR>', 'Quit'],
