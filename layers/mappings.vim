@@ -70,7 +70,7 @@ function! s:recursive_doc(list, keys, desc, i) abort
         if !has_key(a:list, a:keys[a:i])
             let a:list[a:keys[a:i]]={}
         endif
-        if type(a:list[a:keys[a:i]]) != 4
+        if type(a:list[a:keys[a:i]]) != type({})
             " The next iteration would produce and error as the next node is not a
             " dictionary
             let pendingkeys = a:keys[a:i:-1]

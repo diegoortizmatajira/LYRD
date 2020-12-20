@@ -2,7 +2,6 @@
 function! LYRD#layers#coc#plugins() abort
     call LYRD#setup#plugins({
                 \ 'neoclide/coc.nvim': {'branch': 'release'},
-                \ 'ryanoasis/vim-devicons': '',
                 \})
 
 endfunction
