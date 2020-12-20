@@ -59,7 +59,7 @@ function! LYRD#layers#fzf#keybindings() abort
                 \ ["noremap", ['G', 'm'], ':GFiles?<CR>', 'View modified files' ],
                 \])
 
-    call LYRD#layers#mappings#space([
+    call LYRD#layers#mappings#leader([
                 \ ["noremap", ['b'], ':Buffers<CR>', 'Buffer list' ],
                 \])
 

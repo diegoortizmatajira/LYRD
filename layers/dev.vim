@@ -5,7 +5,6 @@ function! LYRD#layers#dev#plugins() abort
                 \ 'Raimondi/delimitMate': '',
                 \ 'tpope/vim-commentary': '',
                 \ 'sheerun/vim-polyglot': '',
-                \ 'dense-analysis/ale': '',
                 \ 'Chiel92/vim-autoformat': '',
                 \ 'kkoomen/vim-doge': '',
                 \})
@@ -14,8 +13,6 @@ endfunction
 
 function! LYRD#layers#dev#settings() abort
 
-    call s:AleSettings()
-
     call LYRD#layers#commands#register_commands({
                 \ "LYRDTest": '',
                 \ "LYRDTestSuite": '',
@@ -23,26 +20,29 @@ function! LYRD#layers#dev#settings() abort
                 \ "LYRDTestFunc": '',
                 \ "LYRDTestLast": '',
                 \ "LYRDBuild": '',
+                \ "LYRDRun": '',
                 \ "LYRDTestCoverage": '',
                 \ "LYRDDebugStart": '',
                 \ "LYRDDebugBreakpoint": '',
                 \ "LYRDAlternateFile": '',
-                \ "LYRDFindUsages": ':ALEFindReferences',
+                \ "LYRDFindUsages": '',
                 \ "LYRDFindImplementations": '',
                 \ "LYRDRefactorSymbol": '',
                 \ "LYRDPreviewDefinitions": '',
                 \ "LYRDPreviewImplementations": '',
                 \ "LYRDTypeLookup": '',
-                \ "LYRDViewDocumentation": ':ALEHover',
-                \ "LYRDFindSymbol": ':ALESymbolSearch',
+                \ "LYRDViewDocumentation": '',
+                \ "LYRDFindSymbol": '',
                 \ "LYRDFixImports": '',
                 \ "LYRDGlobalCodecheck": '',
-                \ "LYRDViewCodeActions": ':ALECodeAction',
+                \ "LYRDViewCodeActions": '',
                 \ "LYRDCodeFormat": ':Autoformat',
-                \ "LYRDRenameSymbol": ':ALERename',
-                \ "LYRDGoToDefinition": ':ALEGoToDefinition',
-                \ "LYRDGoToTypeDefinition": ':ALEGoToTypeDefinition',
+                \ "LYRDRenameSymbol": '',
+                \ "LYRDGoToDefinition": '',
+                \ "LYRDGoToTypeDefinition": '',
                 \ "LYRDQuickFix": ':cope',
+                \ "LYRDImplementInterface": '',
+                \ "LYRDFillStructure": '',
                 \})
 
 endfunction
@@ -50,18 +50,22 @@ endfunction
 function! LYRD#layers#dev#keybindings() abort
 
     call LYRD#layers#mappings#spacemenu([
-                \ [['T'], 'Tests'],
+                \ [['t'], 'Tests'],
                 \ [['d'], 'Development'],
                 \ [['d', 'p'], 'Preview'],
+                \ [['d', 'l'], 'Language'],
+                \ [['G'], 'Go to'],
                 \ ])
 
     call LYRD#layers#mappings#space([
                 \ ["nmap", ['b', 'f'], ':LYRDCodeFormat<CR>', 'Format Buffer'],
                 \ ["nmap", ['d', 'h'], ':LYRDViewDocumentation<CR>', 'Hint Documentation'],
                 \ ['nmap', ['d', 'b'], ':LYRDBuild<CR>', 'Build'],
+                \ ['nmap', ['d', 'x'], ':LYRDRun<CR>', 'Run'],
                 \ ['nmap', ['d', 'a'], ':LYRDAlternateFile<CR>', 'Toggle to alterate file'],
                 \ ['nmap', ['d', 'u'], ':LYRDFindUsages<CR>', 'Find usages'],
                 \ ['nmap', ['d', 'i'], ':LYRDFindImplementations<CR>', 'Find implementations'],
+                \ ['nmap', ['d', 'I'], ':LYRDImplementInterface<CR>', 'Implement interface'],
                 \ ['nmap', ['d', 'l'], ':LYRDTypeLookup<CR>', 'Type lookup'],
                 \ ['nmap', ['d', 's'], ':LYRDFindSymbol<CR>', 'Find symbols'],
                 \ ['nmap', ['d', 'c'], ':LYRDGlobalCodecheck<CR>', 'Global code check'],
@@ -71,14 +75,16 @@ function! LYRD#layers#dev#keybindings() abort
                 \ ["nmap", ['d', 'D'], ':vsp<CR>:LYRDGoToDefinition<CR>', 'Go to definition (v-split],'],
                 \ ['nmap', ['d', 'p', 'd'], ':LYRDPreviewDefinitions<CR>', 'Preview definitions'],
                 \ ['nmap', ['d', 'p', 'i'], ':LYRDPreviewImplementations<CR>', 'Preview implementations'],
-                \ ['nmap', ['D', 's'], ':LYRDDebugStart<CR>', 'Debug start'],
-                \ ['nmap', ['D', 'b'], ':LYRDDebugBreakpoint<CR>', 'Toggle breakpoint'],
-                \ ['nmap', ['T', '.'], ':LYRDTest<CR>', 'Run project tests'],
-                \ ['nmap', ['T', 's'], ':LYRDTestSuite<CR>', 'Run suite tests'],
-                \ ['nmap', ['T', 'f'], ':LYRDTestFile<CR>', 'Run file tests'],
-                \ ['nmap', ['T', 'n'], ':LYRDTestFunc<CR>', 'Run nearest function test'],
-                \ ['nmap', ['T', 'l'], ':LYRDTestLast<CR>', 'Run last tests'],
-                \ ['nmap', ['T', 'c'], ':LYRDTestCoverage<CR>', 'Toggle test coverage'],
+                \ ['nmap', ['d', 'l', 'i'], ':LYRDImplementInterface<CR>', 'Implement interface' ],
+                \ ['nmap', ['d', 'l', 's'], ':LYRDFillStructure<CR>', 'Fill structure' ],
+                \ ['nmap', ['d', 'X'], ':LYRDDebugStart<CR>', 'Debug start'],
+                \ ['nmap', ['d', '.'], ':LYRDDebugBreakpoint<CR>', 'Toggle breakpoint'],
+                \ ['nmap', ['t', '.'], ':LYRDTest<CR>', 'Run project tests'],
+                \ ['nmap', ['t', 's'], ':LYRDTestSuite<CR>', 'Run suite tests'],
+                \ ['nmap', ['t', 'f'], ':LYRDTestFile<CR>', 'Run file tests'],
+                \ ['nmap', ['t', 'n'], ':LYRDTestFunc<CR>', 'Run nearest function test'],
+                \ ['nmap', ['t', 'l'], ':LYRDTestLast<CR>', 'Run last tests'],
+                \ ['nmap', ['t', 'c'], ':LYRDTestCoverage<CR>', 'Toggle test coverage'],
                 \ ["nmap", ['a', 'q'], ':LYRDQuickFix<CR>', 'Quick fix'],
                 \ ['nmap', ['a', 'f'], ':LYRDCodeFormat<CR>', 'Code format'],
                 \ ['nmap', ['a', 'i'], ':LYRDFixImports<CR>', 'Fix imports/using'],
@@ -98,9 +104,9 @@ function! LYRD#layers#dev#keybindings() abort
 
     nnoremap <silent> K :LYRDViewDocumentation<CR>
     map gd :LYRDGoToDefinition<CR>
+    map gt :LYRDGoToTypeDefinition<CR>
     nmap <F5> :LYRDDebugStart<CR>
     nmap <F9> :LYRDDebugBreakpoint<CR>
-
 
 endfunction
 
@@ -108,20 +114,4 @@ function! LYRD#layers#dev#complete() abort
 
 endfunction
 
-function! LYRD#layers#dev#add_linters(lang, linters)
-    :call extend(g:ale_linters, { lang: linters, })
-
-endfunction
-
-function! s:AleSettings()
-    let g:ale_linters = {}
-    let g:ale_disable_lsp = 1
-    let g:ale_fixers = {
-                \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-                \}
-    let g:ale_sign_error = '⛔'
-    let g:ale_sign_warning = ''
-    let g:ale_set_loclist = 1
-    let g:ale_set_quickfix = 1
-endfunction
 

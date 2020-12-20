@@ -36,10 +36,18 @@ function! LYRD#layers#commands#execute_command(command)
 endfunction
 
 function! LYRD#layers#commands#register_implementation(filetype, command, implementation)
+    let fts = a:filetype
+    if type(a:filetype) != type([])
+        let fts = [ a:filetype ]
+    endif
     if !has_key(g:LYRD_Settings.commands, a:command)
         call extend(g:LYRD_Settings.commands, { a:command : {} })
     endif
-    call extend(g:LYRD_Settings.commands[a:command], { a:filetype : a:implementation })
+    if a:implementation != ''
+        for ft in fts
+            call extend(g:LYRD_Settings.commands[a:command], { ft : a:implementation })
+        endfor
+    endif
 endfunction
 
 function! LYRD#layers#commands#register_implementations(filetype, commands)
