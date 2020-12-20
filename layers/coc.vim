@@ -12,18 +12,13 @@ function! LYRD#layers#coc#settings() abort
     let g:coc_global_extensions = []
 
     call LYRD#layers#coc#add_extensions([
-                \ "coc-explorer",
                 \ "coc-snippets",
                 \ "coc-actions",
                 \ "coc-vetur",
                 \ "coc-yank",
                 \])
 
-    call s:explorer_settings()
-
     call LYRD#layers#commands#register_implementations("*", {
-                \ "LYRDViewFileTree": ":CocCommand explorer",
-                \ "LYRDViewFileExplorer": ":CocCommand explorer --position floating",
                 \ "LYRDViewYankList": ":CocList -A --normal yank",
                 \ "LYRDFindUsages": ':call CocActionAsync("jumpReferences")',
                 \ "LYRDFindImplementations": ':call CocActionAsync("jumpImplementation")',
@@ -141,11 +136,6 @@ endfunction
 function! LYRD#layers#coc#add_extensions(extensions)
     call extend(g:coc_global_extensions, a:extensions)
 
-endfunction
-
-function! s:explorer_settings()
-    " Removes CoC Explorer if it is the last buffer
-    autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 endfunction
 
 function! s:check_back_space() abort

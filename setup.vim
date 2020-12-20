@@ -38,7 +38,8 @@ endfunction
 
 function! s:load_layers()
     for layer in g:LYRD_Settings.layers
-        execute 'so '.g:LYRD_Settings.root.'layers/'.layer.'.vim'
+        let layer_path = join(split(layer, '#'), '/')
+        execute 'so '.g:LYRD_Settings.root.'layers/'.layer_path.'.vim'
     endfor
 endfunction
 

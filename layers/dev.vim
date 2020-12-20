@@ -108,7 +108,8 @@ function! LYRD#layers#dev#complete() abort
 
 endfunction
 
-function! LYRD#layers#dev#support()
+function! LYRD#layers#dev#add_linters(lang, linters)
+    :call extend(g:ale_linters, { lang: linters, })
 
 endfunction
 
