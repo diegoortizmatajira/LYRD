@@ -48,6 +48,7 @@ function! LYRD#layers#lang#go#settings() abort
     let g:go_highlight_extra_types = 1
     let g:go_debug_breakpoint_sign_text = '>'
 
+    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 endfunction
 
 function! LYRD#layers#lang#go#keybindings() abort
