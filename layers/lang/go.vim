@@ -49,6 +49,14 @@ function! LYRD#layers#lang#go#settings() abort
     let g:go_debug_breakpoint_sign_text = '>'
 
     autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+    augroup completion_preview_close
+        autocmd!
+        if v:version > 703 || v:version == 703 && has('patch598')
+            autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
+        endif
+    augroup END
+
 endfunction
 
 function! LYRD#layers#lang#go#keybindings() abort
