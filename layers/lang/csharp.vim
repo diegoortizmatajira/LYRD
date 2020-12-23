@@ -22,7 +22,7 @@ function! LYRD#layers#lang#csharp#settings() abort
                 \ 'LYRDCodeFormat': ':OmniSharpCodeFormat',
                 \})
 
-    call LYRD#layers#linters#add('#', ['OmniSharp'])
+    call LYRD#layers#linters#add('cs', ['OmniSharp'])
     call LYRD#layers#coc#add_extensions(['coc-omnisharp'])
 
 endfunction

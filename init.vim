@@ -19,4 +19,5 @@ call LYRD#setup#load(s:root, [
             \ 'ui',
             \ 'lang#go',
             \ 'lang#csharp',
+            \ 'lang#vim',
             \])
