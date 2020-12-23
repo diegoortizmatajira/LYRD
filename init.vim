@@ -18,4 +18,5 @@ call LYRD#setup#load(s:root, [
             \ 'wiki',
             \ 'ui',
             \ 'lang#go',
+            \ 'lang#csharp',
             \])
