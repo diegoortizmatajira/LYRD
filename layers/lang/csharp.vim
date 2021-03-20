@@ -9,7 +9,7 @@ function! LYRD#layers#lang#csharp#plugins() abort
 endfunction
 
 function! LYRD#layers#lang#csharp#settings() abort
-    call LYRD#layers#commands#register_implementations('go',{
+    call LYRD#layers#commands#register_implementations('cs',{
                 \ 'LYRDTestFile': ':OmniSharpRunTestsInFile',
                 \ 'LYRDTestFunc': ':OmniSharpRunTest',
                 \ 'LYRDViewDocumentation': ':OmniSharpDocumentation',

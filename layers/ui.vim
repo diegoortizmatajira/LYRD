@@ -19,7 +19,7 @@ function! LYRD#layers#ui#settings() abort
     call s:deviconsSetup()
     call s:startifySetup()
 
-    let g:hardtime_default_on = 1
+    let g:hardtime_default_on = 0
 
     " Highlight the yanked text
     augroup highlight_yank
