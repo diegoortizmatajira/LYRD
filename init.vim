@@ -14,10 +14,11 @@ let layers = [
                         \ 'filetree',
                         \ 'wiki',
                         \ 'ui',
+                        \ 'jetbrains_keys',
                         \]
 
 if $VIMASIDE == 'true'
-        let layers = [ 
+        let layers = [
                                 \ 'mappings',
                                 \ 'commands',
                                 \ 'core',
@@ -31,6 +32,7 @@ if $VIMASIDE == 'true'
                                 \ 'filetree',
                                 \ 'wiki',
                                 \ 'ui',
+                                \ 'jetbrains_keys',
                                 \ 'lang#go',
                                 \ 'lang#csharp',
                                 \ 'lang#vim',

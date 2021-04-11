@@ -10,16 +10,16 @@ endfunction
 function! LYRD#layers#filetree#settings() abort
 
     call LYRD#layers#commands#register_implementations("*", {
-                \ "LYRDViewFileTree": ":LuaTreeToggle",
-                \ "LYRDViewFileExplorer": ":LuaTreeToggle",
+                \ "LYRDViewFileTree": ":NvimTreeToggle",
+                \ "LYRDViewFileExplorer": ":NvimTreeToggle",
                 \ })
 
-    let g:lua_tree_side = 'right'
-    let g:lua_tree_width = 60
-    let g:lua_tree_auto_close = 1
-    let g:lua_tree_quit_on_open = 1
-    let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache', 'bin', 'obj' ]
-    let g:lua_tree_icons = {
+    let g:nvim_tree_side = 'right'
+    let g:nvim_tree_width = 60
+    let g:nvim_tree_auto_close = 1
+    let g:nvim_tree_quit_on_open = 1
+    let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'bin', 'obj' ]
+    let g:nvim_tree_icons = {
                 \ 'default': '',
                 \ 'symlink': '',
                 \ 'git': {

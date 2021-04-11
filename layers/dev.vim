@@ -4,7 +4,6 @@ function! LYRD#layers#dev#plugins() abort
                 \ 'honza/vim-snippets': '',
                 \ 'Raimondi/delimitMate': '',
                 \ 'tpope/vim-commentary': '',
-                \ 'sheerun/vim-polyglot': '',
                 \ 'Chiel92/vim-autoformat': '',
                 \ 'kkoomen/vim-doge': '',
                 \})
