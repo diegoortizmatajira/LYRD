@@ -26,6 +26,7 @@ if $VIMASIDE == 'true'
                                 \ 'telescope',
                                 \ 'git',
                                 \ 'dev',
+                                \ 'treesitter',
                                 \ 'linters',
                                 \ 'debug',
                                 \ 'coc',
