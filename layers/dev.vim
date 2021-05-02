@@ -6,11 +6,14 @@ function! LYRD#layers#dev#plugins() abort
                 \ 'tpope/vim-commentary': '',
                 \ 'Chiel92/vim-autoformat': '',
                 \ 'kkoomen/vim-doge': '',
+                \ 'norcalli/nvim-colorizer.lua': '',
                 \})
 
 endfunction
 
 function! LYRD#layers#dev#settings() abort
+
+    lua require'colorizer'.setup({ '*'; }, { RRGGBBAA = true; })
 
     call LYRD#layers#commands#register_commands({
                 \ "LYRDTest": '',
