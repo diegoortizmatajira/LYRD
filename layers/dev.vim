@@ -6,11 +6,14 @@ function! LYRD#layers#dev#plugins() abort
                 \ 'tpope/vim-commentary': '',
                 \ 'Chiel92/vim-autoformat': '',
                 \ 'kkoomen/vim-doge': '',
+                \ 'norcalli/nvim-colorizer.lua': '',
                 \})
 
 endfunction
 
 function! LYRD#layers#dev#settings() abort
+
+    lua require'colorizer'.setup()
 
     call LYRD#layers#commands#register_commands({
                 \ "LYRDTest": '',
@@ -103,6 +106,7 @@ function! LYRD#layers#dev#keybindings() abort
 
     nnoremap <silent> K :LYRDViewDocumentation<CR>
     map gd :LYRDGoToDefinition<CR>
+    map gi :LYRDFindImplementations<CR>
     map gt :LYRDGoToTypeDefinition<CR>
     nmap <F5> :LYRDDebugStart<CR>
     nmap <F9> :LYRDDebugBreakpoint<CR>

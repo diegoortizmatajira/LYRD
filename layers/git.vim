@@ -2,8 +2,6 @@
 function! LYRD#layers#git#plugins() abort
     call LYRD#setup#plugins({
                 \ 'tpope/vim-fugitive': '',
-                \ 'tpope/vim-rhubarb': '',
-                \ 'shumphrey/fugitive-gitlab.vim': '',
                 \ 'airblade/vim-gitgutter': '',
                 \ 'tpope/vim-dispatch': '',
                 \})

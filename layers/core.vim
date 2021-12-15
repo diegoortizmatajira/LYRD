@@ -3,7 +3,6 @@ function! LYRD#layers#core#plugins() abort
     call LYRD#setup#plugins({
                 \    'Shougo/vimproc.vim': {'do': 'make'},
                 \    'tpope/vim-surround': '',
-                \    'vimwiki/vimwiki': '',
                 \    })
 
 endfunction
